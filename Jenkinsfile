@@ -6,14 +6,14 @@ pipeline {
                 bat 'mvn -DskipTests clean package'
             }
         }
+        stage('Doc') {
+                    steps {
+                        bat 'site --fail-never'
+                    }
+                }
         stage('Test') {
             steps {
                 bat 'mvn test'
-            }
-        }
-        stage('Doc') {
-            steps {
-                bat 'site --fail-never'
             }
         }
     }
