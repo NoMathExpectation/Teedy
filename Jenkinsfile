@@ -7,10 +7,10 @@ pipeline {
             }
         }
         stage('Doc') {
-                    steps {
-                        bat 'site --fail-never'
-                    }
+                steps {
+                    bat 'mvn site --fail-never'
                 }
+            }
         stage('Test') {
             steps {
                 bat 'mvn test'
