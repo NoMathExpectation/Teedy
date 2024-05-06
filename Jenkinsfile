@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                bat 'docker push teedy-test'
+                bat 'docker tag teedy-test nomathexpectation/teedy-test'
+                bat 'docker push nomathexpectation/teedy-test'
             }
         }
         stage('Create') {
