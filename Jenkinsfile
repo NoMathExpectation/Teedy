@@ -13,13 +13,13 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                bat 'docker tag teedy-test nomathexpectation/teedy-test'
-                bat 'docker push nomathexpectation/teedy-test'
+                bat 'docker tag teedy-test nomathexpectation/teedy-test:k8s'
+                bat 'docker push nomathexpectation/teedy-test:k8s'
             }
         }
         stage('k8s') {
             steps {
-                bat 'kubectl set image deployments/hello-node teedy-test=nomathexpectation/teedy-test'
+                bat 'kubectl set image deployments/hello-node teedy-test=nomathexpectation/teedy-test:k8s'
             }
         }
     }
