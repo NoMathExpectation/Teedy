@@ -19,7 +19,7 @@ pipeline {
         }
         stage('k8s') {
             steps {
-                bat 'kubectl set image deployments/hello-node container-name=nomathexpectation/teedy-test'
+                bat 'kubectl set image deployments/hello-node teedy-test=nomathexpectation/teedy-test'
             }
         }
     }
