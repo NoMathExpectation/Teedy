@@ -17,11 +17,9 @@ pipeline {
                 bat 'docker push nomathexpectation/teedy-test'
             }
         }
-        stage('Create') {
+        stage('k8s') {
             steps {
-                bat 'docker run --rm -d -p 8082:8080 teedy-test'
-                bat 'docker run --rm -d -p 8083:8080 teedy-test'
-                bat 'docker run --rm -d -p 8084:8080 teedy-test'
+                bat 'kubectl set image deployments/hello-node container-name=nomathexpectation/teedy-test'
             }
         }
     }
